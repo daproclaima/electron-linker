@@ -12,5 +12,8 @@ app.on('ready', () => {
       nodeIntegration: true
     }
   })
+  win.loadFile('./index.html')
+
+  win.on('close', () => { app.quit() })
   return win
 })
