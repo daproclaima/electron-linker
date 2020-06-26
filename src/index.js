@@ -1,9 +1,11 @@
 const {
   app,
   BrowserWindow,
-  Menu
+  Menu,
+  ipcMain
 } = require('electron')
-const MenuBar = require('./src/components/MenuBar')
+const Datastore = require('nedb')
+const MenuBar = require('./components/MenuBar')
 
 let win
 
@@ -17,10 +19,22 @@ app.on('ready', () => {
   })
   win.on('close', () => { app.quit() })
 
-  win.loadFile('./view/index.html')
+  win.loadFile('../view/index.html')
 
   const menu = Menu.buildFromTemplate(MenuBar)
   Menu.setApplicationMenu(menu)
+})
+
+// DB connection
+const db = new Datastore({
+  filename: './collections/links.db',
+  autoload: true
+})
+// add link
+ipcMain.on('addLink', (_, link) => {
+  db.insert(link, err => {
+    if (err) throw new Error(err)
+  })
 })
 
 // If dev env

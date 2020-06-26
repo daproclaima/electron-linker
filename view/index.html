@@ -2,11 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Electron-Linker App</title>
     <link rel="stylesheet" href="../assets/app.css">
+    <script src="../src/client.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -15,7 +17,9 @@
         <div class="field">
           <label class="label">Link</label>
           <div class="control">
-            <input class="input" type="url" placeholder="URL link">
+            <label>
+              <input class="input" placeholder="URL link" type="url">
+            </label>
           </div>
         </div>
         <div class="control">
