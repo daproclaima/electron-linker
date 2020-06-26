@@ -21,6 +21,14 @@ const render = (link) => {
   form.reset()
 }
 
+window.addEventListener('load', () => {
+  ipcRenderer.send('loadAll', { link: link.value })
+})
+
+ipcRenderer.on('loaded', (e, links) => {
+  links.forEach(({ link })=> render(link))
+})
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   ipcRenderer.send('addLink', { link: link.value })

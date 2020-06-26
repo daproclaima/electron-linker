@@ -38,6 +38,10 @@ ipcMain.on('addLink', (_, link) => {
   win.webContents.send('added', link.link)
 })
 
+// Load all links
+ipcMain.on('loadAll', () => {
+  db.find({}, (_, links) => win.webContents.send('loaded', links))
+})
 // If dev env
 if (!app.isPackaged) {
   MenuBar.push({
