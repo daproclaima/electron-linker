@@ -42,6 +42,14 @@ ipcMain.on('addLink', (_, link) => {
 ipcMain.on('loadAll', () => {
   db.find({}, (_, links) => win.webContents.send('loaded', links))
 })
+
+// Deletes all link
+ipcMain.on('clearAll', () => {
+  db.remove({}, { multi: true }, err => {
+    if (err) throw new Error(err)
+  })
+  win.webContents.send('cleared')
+})
 // If dev env
 if (!app.isPackaged) {
   MenuBar.push({

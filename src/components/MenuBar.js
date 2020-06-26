@@ -3,7 +3,10 @@ const MenuBar = [
     label: 'File',
     submenu: [
       {
-        label: 'Delete everything'
+        label: 'Delete everything',
+        click (_, win) {
+          win.webContents.send('clearAll')
+        }
       },
       {
         label: 'Exit',

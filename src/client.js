@@ -34,3 +34,5 @@ form.addEventListener('submit', (e) => {
   ipcRenderer.send('addLink', { link: link.value })
 })
 ipcRenderer.on('added', (_, link) => render(link))
+ipcRenderer.on('clearAll', () => ipcRenderer.send('clearAll'))
+ipcRenderer.on('cleared', () => list.innerHTML = '')
