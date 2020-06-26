@@ -1,23 +1,25 @@
 {
   "name": "electron-linker",
   "version": "1.0.0",
-  "description": "course of Anhthony Welc from his program courses.hardocde.rs",
-  "main": "index.js",
+  "description": "course of Anhthony Welc from his program https://courses.hardocde.rs",
+  "main": "src/index.js",
   "repository": "https://github.com/DaProclaima/electron-linker",
   "author": "daproclaima <sn.itpro@gmail.com>, Antho Welc",
   "license": "MIT",
   "scripts": {
-    "start": "eslint . & electron .",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Linkr\"",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds"
+    "dev": "eslint ./src/index.js & electron --inspect=5858 .",
+    "start": "eslint ./src/index.js & electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/unix/iconfinder_links3_216497.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/windows/iconfinder_links3_216497.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Linkr\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/unix/iconfinder_links3_216497.icns --prune=true --out=release-builds"
   },
   "dependencies": {
     "dot-env": "^0.0.1",
-    "electron": "^9.0.5",
     "nedb": "^1.8.0"
   },
   "devDependencies": {
+    "electron": "^9.0.5",
+    "bulma": "^0.9.0",
     "electron-packager": "^14.2.1",
     "eslint": "6.2.2",
     "eslint-config-standard": "^14.1.1",
