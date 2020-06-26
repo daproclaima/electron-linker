@@ -17,7 +17,7 @@ app.on('ready', () => {
   })
   win.on('close', () => { app.quit() })
 
-  win.loadFile('./index.html')
+  win.loadFile('./view/index.html')
 
   const menu = Menu.buildFromTemplate(MenuBar)
   Menu.setApplicationMenu(menu)
@@ -34,7 +34,7 @@ if (!app.isPackaged) {
       },
       {
         label: 'Show Dev Tools',
-        accelerator: process.platform === 'darwin' ? 'Command+F12' : 'Ctrl+F12',
+        accelerator: process.platform === 'darwin' ? 'F12' : 'F12',
         click (_, win) {
           win.toggleDevTools()
         }
