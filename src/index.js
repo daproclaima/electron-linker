@@ -35,6 +35,7 @@ ipcMain.on('addLink', (_, link) => {
   db.insert(link, err => {
     if (err) throw new Error(err)
   })
+  win.webContents.send('added', link.link)
 })
 
 // If dev env
