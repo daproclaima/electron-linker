@@ -1,6 +1,6 @@
 const MenuBar = [
   {
-    label: 'Fichier',
+    label: 'File',
     submenu: [
       {
         label: 'Delete everything'
