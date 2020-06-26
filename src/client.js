@@ -1,6 +1,4 @@
-console.log('client.js')
-
-const { ipcRenderer } = require('electron')
+const { ipcRenderer, shell } = require('electron')
 
 const form = document.querySelector('form')
 const link = document.querySelector('input')
@@ -13,6 +11,10 @@ const render = (link) => {
   li.className ='menu-item'
   const linkTag = document.createElement('a')
   linkTag.setAttribute('href', link)
+  linkTag.addEventListener('click', e => {
+    e.preventDefault()
+    shell.openExternal(link)
+  })
   linkTag.innerHTML = link
 
   li.appendChild(linkTag)
