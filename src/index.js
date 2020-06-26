@@ -6,7 +6,7 @@ const {
 } = require('electron')
 const Datastore = require('nedb')
 const MenuBar = require('./components/MenuBar')
-
+const path = require('path')
 let win
 
 app.on('ready', () => {
@@ -19,7 +19,7 @@ app.on('ready', () => {
   })
   win.on('close', () => { app.quit() })
 
-  win.loadFile('../view/index.html')
+  win.loadFile(path.join(__dirname, '../view/index.html'))
 
   const menu = Menu.buildFromTemplate(MenuBar)
   Menu.setApplicationMenu(menu)
@@ -27,7 +27,7 @@ app.on('ready', () => {
 
 // DB connection
 const db = new Datastore({
-  filename: './collections/links.db',
+  filename: path.join(__dirname, '../collections/links.db'),
   autoload: true
 })
 // add link
@@ -40,7 +40,21 @@ ipcMain.on('addLink', (_, link) => {
 
 // Load all links
 ipcMain.on('loadAll', () => {
-  db.find({}, (_, links) => win.webContents.send('loaded', links))
+  db.find({}, (err, links) => {
+    try {
+      if (err) {
+        return Error(err)
+      }
+
+      if (links !== '') {
+        win.webContents.send('loaded', links)
+      } else {
+        win.webContents.send('loaded', '')
+      }
+    } catch (error) {
+      throw new Error(err)
+    }
+  })
 })
 
 // Deletes all link
@@ -51,7 +65,7 @@ ipcMain.on('clearAll', () => {
   win.webContents.send('cleared')
 })
 // If dev env
-if (!app.isPackaged) {
+// if (!app.isPackaged) {
   MenuBar.push({
     label: 'Dev Tools',
     submenu: [
@@ -67,6 +81,5 @@ if (!app.isPackaged) {
         }
       }
     ]
-
   })
-}
+// }

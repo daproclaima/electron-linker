@@ -5,8 +5,7 @@ const link = document.querySelector('input')
 const list = document.querySelector('ul')
 
 const render = (link) => {
-  // console.log('log de link')
-  // console.log(link)
+
   const li = document.createElement('li')
   li.className ='menu-item'
   const linkTag = document.createElement('a')
