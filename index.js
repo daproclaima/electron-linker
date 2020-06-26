@@ -1,7 +1,10 @@
 const {
   app,
-  BrowserWindow
+  BrowserWindow,
+  Menu
 } = require('electron')
+const MenuBar = require('./src/components/MenuBar')
+
 let win
 
 app.on('ready', () => {
@@ -12,8 +15,10 @@ app.on('ready', () => {
       nodeIntegration: true
     }
   })
+  win.on('close', () => { app.quit() })
+
   win.loadFile('./index.html')
 
-  win.on('close', () => { app.quit() })
-  return win
+  const menu = Menu.buildFromTemplate(MenuBar)
+  Menu.setApplicationMenu(menu)
 })
