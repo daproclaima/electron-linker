@@ -9,9 +9,9 @@
   "scripts": {
     "dev": "eslint ./src/index.js & electron --inspect=5858 ./src/index.js",
     "start": "eslint . & electron .",
-    "package-mac": "electron-packager ./src/index.js --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager ./src/index.js --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Linkr\"",
-    "package-linux": "electron-packager ./src/index.js --overwrite --platform=linux --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds"
+    "package-mac": "electron-packager ./src/index.js --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/iconfinder_links3_216497.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager ./src/index.js --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/windows/iconfinder_links3_216497.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Linkr\"",
+    "package-linux": "electron-packager ./src/index.js --overwrite --platform=linux --arch=x64 --icon=assets/icons/mac/iconfinder_links3_216497.icns --prune=true --out=release-builds"
   },
   "dependencies": {
     "dot-env": "^0.0.1",
